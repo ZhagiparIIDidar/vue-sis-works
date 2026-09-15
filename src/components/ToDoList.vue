@@ -5,7 +5,7 @@ import {ref, reactive, computed} from 'vue';
    TO-DO LIST
    (в будущем можно вынести в components/TodoList.vue)
    ========================================================== */
-let tasks = reactive([]);
+let tasks = ref([]);
 let task = ref('');
 let task_id = ref('');
 let nextId = 1;
@@ -13,7 +13,7 @@ let showTasks = ref(true);
 
 function addTask() {
   if (task.value) {
-    tasks.push({id: nextId, description: task.value});
+    tasks.value.push({id: nextId, description: task.value});
     nextId++;
     task.value = '';
   }
@@ -21,9 +21,9 @@ function addTask() {
 
 function removeTask(tid) {
   const id = +tid;
-  if (tasks.some((task) => task.id === id)) {
+  if (tasks.value.some((task) => task.id === id)) {
     console.log(id, 'deleted');
-    tasks = tasks.filter((task) => task.id !== id);
+    tasks.value = tasks.value.filter((task) => task.id !== id);
     return;
   }
   console.log('no task found', id);
@@ -44,26 +44,32 @@ function show_tasks() {
     </button>
     <br/>
 
-    <ul v-show="showTasks">
-      <li v-for="task of tasks" :key="task.id">
-        {{ task.id }} - {{ task.description }}
-      </li>
-    </ul>
+    <div class="to-do-sec stack">
+      <ul class="list-surface" v-show="showTasks">
+        <li v-for="task of tasks" :key="task.id">
+          {{ task.id }} - {{ task.description }}
+        </li>
+      </ul>
 
-    <input type="text" placeholder="text your task here ...)" v-model="task"/>
-    <button @click="addTask()">add task</button>
+      <div class="row">
+        <input type="text" placeholder="text your task here ...)" v-model="task"/>
+        <button @click="addTask()">add task</button>
+      </div>
 
-    <br/>
-
-    <input
-        type="text"
-        placeholder="enter task id you want to delete ...)"
-        v-model="task_id"
-    />
-    <button @click="removeTask(task_id)">remove task</button>
+      <div class="row">
+        <input
+            type="text"
+            placeholder="enter task id you want to delete ...)"
+            v-model="task_id"
+        />
+        <button @click="removeTask(task_id)">remove task</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-
+.row input {
+  flex: 1;
+}
 </style>
