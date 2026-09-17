@@ -1,0 +1,242 @@
+/* ==========================================================
+   GLOBAL STYLE — учебный Vue-проект
+   Подключить один раз в main.js:  import './style.css'
+   Дальше стили применяются автоматически к обычным тегам —
+   новые кнопки/инпуты/списки в компонентах ничего доп. не требуют.
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap');
+
+/* ---------- Design tokens ---------- */
+:root {
+    --bg: #39564b;
+    --surface: #ffffff;
+    --ink: #1b1f27;
+    --ink-muted: #6b7280;
+    --border: #dde1e6;
+
+    --accent: #2f6f4f;
+    --accent-hover: #24573f;
+    --accent-soft: #e7f0ea;
+
+    --danger: #c6433b;
+    --danger-soft: #f8e6e4;
+    --success: #3f9060;
+    --success-soft: #e4f0e8;
+
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 40px;
+
+    --radius: 6px;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+#app {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: var(--space-4) var(--space-3) var(--space-5);
+}
+
+/* ---------- Typography ---------- */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.25;
+    margin: var(--space-4) 0 var(--space-2);
+}
+
+h1 {
+    font-size: 1.9rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 1.1rem;
+}
+
+p {
+    margin: 0 0 var(--space-3);
+    max-width: 70ch;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: var(--space-4) 0;
+}
+
+/* ---------- Buttons ---------- */
+button {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--surface);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    padding: var(--space-2) var(--space-3);
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+button:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+button:disabled {
+    background: var(--border);
+    border-color: var(--border);
+    color: var(--ink-muted);
+    cursor: not-allowed;
+}
+
+/* второстепенное действие: <button class="btn-outline"> */
+button.btn-outline {
+    background: transparent;
+    color: var(--accent);
+}
+
+button.btn-outline:hover {
+    background: var(--accent-soft);
+}
+
+/* ---------- Forms ---------- */
+input,
+textarea,
+select {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--space-2) var(--space-3);
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    margin-bottom: var(--space-1);
+}
+
+/* ---------- Lists ---------- */
+ul,
+ol {
+    padding-left: var(--space-4);
+    margin: 0 0 var(--space-3);
+}
+
+li {
+    margin-bottom: var(--space-1);
+}
+
+/* список-«карточка» без разметки — просто оберни в <ul class="list-surface"> */
+.list-surface {
+    list-style: none;
+    padding: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.list-surface li {
+    padding: var(--space-2) var(--space-3);
+    margin: 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.list-surface li:last-child {
+    border-bottom: none;
+}
+
+/* ---------- Nav ---------- */
+nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    background: var(--ink);
+    border-radius: var(--radius);
+}
+
+nav a {
+    color: var(--surface);
+}
+
+nav a:hover {
+    color: var(--accent-soft);
+}
+
+/* ---------- Layout helpers ---------- */
+.row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.stack > * + * {
+    margin-top: var(--space-3);
+}
+
+.surface {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--space-3);
+}
+
+.muted {
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+}
