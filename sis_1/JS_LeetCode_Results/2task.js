@@ -1,4 +1,4 @@
-var createCounter = function (n) {
+const createCounter = function (n) {
     return function () {
         return n++;
     };

@@ -23,3 +23,20 @@ Array.prototype.snail = function (rowsCount, colsCount) {
 
     return result;
 };
+
+
+let arr = new Array(3).fill(new Array(3).fill(0));
+
+for (let i = 0; i < arr.length; i++) {
+    // for (let j = 0; j < arr.length; j++) {
+    //     console.log(arr[i][j]);
+    // }
+    // console.log('come into the loop')
+    console.log('-'.repeat(10));
+    arr.forEach(j => console.log(j === arr[i]));
+}
+
+
+
+
+

@@ -2,6 +2,9 @@
 import Header from "@/components/Header.vue";
 import Products from "@/views/Products.vue";
 import ToDoList from "@/components/ToDoList.vue";
+
+console.log("App mounted");
+
 </script>
 
 <template>
@@ -9,7 +12,7 @@ import ToDoList from "@/components/ToDoList.vue";
   <Header/>
   <Products/>
   <ToDoList/>
-  
+
 
 </template>
 

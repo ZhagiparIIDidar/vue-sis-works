@@ -1,6 +1,7 @@
 <script setup>
 import {ref, reactive, computed} from 'vue';
 import {products as InitialProducts} from "@/services/mockData.js";
+import Product from "@/components/Product.vue";
 
 /* ==========================================================
    PRODUCTS
@@ -35,29 +36,34 @@ function show_products() {
     </button>
 
     <div class="product-grid" v-if="showDataFlag">
-      <div class="product-card" v-for="product in products" :key="product.id">
-        <p class="product-card__name">{{ product.name }}</p>
-        <p class="product-card__price">{{ product.price }} ₸</p>
-        <span
-            class="product-card__status"
-            :class="product.inStock ? 'product-card__status--in-stock' : 'product-card__status--out-of-stock'"
-        >
-      {{ product.inStock ? inStockText : stockText }}
-    </span>
-      </div>
+      <!--      <div class="product-card" v-for="product in products" :key="product.id">-->
+      <Product
+          v-for="product in products"
+          :key="product.id"
+          :product="product"
+      />
+      <!--        <p class="product-card__name">{{ product.name }}</p>-->
+      <!--        <p class="product-card__price">{{ product.price }} ₸</p>-->
+      <!--        <span-->
+      <!--            class="product-card__status"-->
+      <!--            :class="product.inStock ? 'product-card__status&#45;&#45;in-stock' : 'product-card__status&#45;&#45;out-of-stock'"-->
+      <!--        >-->
+      <!--      {{ product.inStock ? inStockText : stockText }}-->
+      <!--    </span>-->
     </div>
-
-    <!--    <ol v-if="showDataFlag">-->
-    <!--      <li v-for="product in products" :key="product.id">-->
-    <!--        <div v-if="product.inStock">-->
-    <!--          {{ product.name }} - {{ product.price }} - {{ inStockText }}-->
-    <!--        </div>-->
-    <!--        <div v-else>-->
-    <!--          {{ product.name }} - {{ product.price }} - {{ stockText }}-->
-    <!--        </div>-->
-    <!--      </li>-->
-    <!--    </ol>-->
   </div>
+
+  <!--    <ol v-if="showDataFlag">-->
+  <!--      <li v-for="product in products" :key="product.id">-->
+  <!--        <div v-if="product.inStock">-->
+  <!--          {{ product.name }} - {{ product.price }} - {{ inStockText }}-->
+  <!--        </div>-->
+  <!--        <div v-else>-->
+  <!--          {{ product.name }} - {{ product.price }} - {{ stockText }}-->
+  <!--        </div>-->
+  <!--      </li>-->
+  <!--    </ol>-->
+  <!--  </div>-->
 
   <hr/>
   <h3>{{ countOfInStockProduct }}</h3>

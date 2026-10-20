@@ -1,4 +1,4 @@
-var join = function (arr1, arr2) {
+const join = function (arr1, arr2) {
     const map = new Map();
 
     for (const obj of arr1) {

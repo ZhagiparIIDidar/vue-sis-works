@@ -1,4 +1,4 @@
-var expect = function (val) {
+const expect = function (val) {
     return {
         toBe: function (val2) {
             if (val === val2) {

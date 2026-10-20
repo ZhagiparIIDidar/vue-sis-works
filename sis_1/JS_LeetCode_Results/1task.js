@@ -10,3 +10,5 @@ console.log(nums.last()); // 3
 
 const empty = [];
 console.log(empty.last()); // -1
+
+

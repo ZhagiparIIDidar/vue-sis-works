@@ -1,5 +1,5 @@
 <script setup>
-import {ref, reactive, computed} from 'vue';
+import {ref} from 'vue';
 
 /* ==========================================================
    NAV PANEL
