@@ -1,0 +1,32 @@
+body {
+  background: #f5ecdb;
+}
+
+.tag-done {
+  background: #fec637;
+  border-color: #fec637;
+  color: #1c1207;
+}
+
+.tag-pending {
+  background: transparent;
+  border-color: #551400;
+  color: #551400;
+}
+
+.tag-company {
+  background: #706344;
+  border-color: #706344;
+  color: #fffbf2;
+}
+
+.tag-instructor {
+  background: #551400;
+  border-color: #551400;
+  color: #fec637;
+}
+
+.ant-card {
+  box-shadow: none;
+  border: 1px solid #eadfc3;
+}
