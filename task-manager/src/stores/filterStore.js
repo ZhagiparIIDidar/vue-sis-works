@@ -1,13 +1,12 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { SortBy, SortOrder, TaskPriority, TaskStatus } from '@/types/task'
 
 export const useFilterStore = defineStore('filters', () => {
   const searchQuery = ref('')
-  const statusFilter = ref<TaskStatus | 'all'>('all')
-  const priorityFilter = ref<TaskPriority | 'all'>('all')
-  const sortBy = ref<SortBy>('createdAt')
-  const sortOrder = ref<SortOrder>('desc')
+  const statusFilter = ref('all')
+  const priorityFilter = ref('all')
+  const sortBy = ref('createdAt')
+  const sortOrder = ref('desc')
 
   function resetFilters() {
     searchQuery.value = ''

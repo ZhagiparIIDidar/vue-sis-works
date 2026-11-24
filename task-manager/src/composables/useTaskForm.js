@@ -1,9 +1,6 @@
-import { computed, reactive, ref, type Ref } from 'vue'
-import type { FormInstance } from 'ant-design-vue'
-import type { Rule } from 'ant-design-vue/es/form'
-import type { Task, TaskPayload } from '@/types/task'
+import { computed, reactive, ref } from 'vue'
 
-const defaultState = (): TaskPayload => ({
+const defaultState = () => ({
   title: '',
   description: '',
   status: 'todo',
@@ -12,11 +9,11 @@ const defaultState = (): TaskPayload => ({
 })
 
 /** Состояние формы задачи, валидация, заполнение при редактировании. */
-export function useTaskForm(task: Ref<Task | null>) {
-  const formRef = ref<FormInstance>()
-  const formState = reactive<TaskPayload>(defaultState())
+export function useTaskForm(task) {
+  const formRef = ref()
+  const formState = reactive(defaultState())
 
-  const rules: Record<string, Rule[]> = {
+  const rules = {
     title: [
       { required: true, whitespace: true, message: 'Введите название задачи' },
       { max: 100, message: 'Не более 100 символов' }
@@ -32,7 +29,7 @@ export function useTaskForm(task: Ref<Task | null>) {
     formRef.value?.clearValidate()
   }
 
-  const fillForm = (t: Task) => {
+  const fillForm = (t) => {
     Object.assign(formState, {
       title: t.title,
       description: t.description,
@@ -43,7 +40,7 @@ export function useTaskForm(task: Ref<Task | null>) {
   }
 
   /** Валидирует форму и возвращает готовые данные (или бросает ошибку валидации). */
-  const validate = async (): Promise<TaskPayload> => {
+  const validate = async () => {
     await formRef.value?.validate()
     return {
       ...formState,

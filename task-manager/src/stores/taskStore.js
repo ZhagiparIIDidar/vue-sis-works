@@ -2,11 +2,10 @@ import { computed } from 'vue'
 import { defineStore } from 'pinia'
 import { useLocalStorage } from '@/composables/useLocalStorage'
 import { generateId, isOverdue } from '@/utils/task'
-import type { Task, TaskPayload, TaskStatus } from '@/types/task'
 
 export const useTaskStore = defineStore('tasks', () => {
   // state (автоматически сохраняется в localStorage)
-  const tasks = useLocalStorage<Task[]>('task-manager:tasks', [])
+  const tasks = useLocalStorage('task-manager:tasks', [])
 
   // getters
   const todoTasks = computed(() => tasks.value.filter((t) => t.status === 'todo'))
@@ -20,7 +19,7 @@ export const useTaskStore = defineStore('tasks', () => {
   const overdueCount = computed(() => overdueTasks.value.length)
 
   // actions
-  function addTask(payload: TaskPayload) {
+  function addTask(payload) {
     const now = new Date().toISOString()
     tasks.value.unshift({
       id: generateId(),
@@ -30,17 +29,17 @@ export const useTaskStore = defineStore('tasks', () => {
     })
   }
 
-  function updateTask(id: string, payload: TaskPayload) {
+  function updateTask(id, payload) {
     const task = tasks.value.find((t) => t.id === id)
     if (!task) return
     Object.assign(task, payload, { updatedAt: new Date().toISOString() })
   }
 
-  function deleteTask(id: string) {
+  function deleteTask(id) {
     tasks.value = tasks.value.filter((t) => t.id !== id)
   }
 
-  function changeStatus(id: string, status: TaskStatus) {
+  function changeStatus(id, status) {
     const task = tasks.value.find((t) => t.id === id)
     if (!task) return
     task.status = status

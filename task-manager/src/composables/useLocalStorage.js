@@ -1,17 +1,17 @@
-import { ref, watch, type Ref } from 'vue'
+import { ref, watch } from 'vue'
 
 /** Реактивное значение, автоматически синхронизируемое с localStorage. */
-export function useLocalStorage<T>(key: string, initial: T): Ref<T> {
-  const read = (): T => {
+export function useLocalStorage(key, initial) {
+  const read = () => {
     try {
       const raw = localStorage.getItem(key)
-      return raw ? (JSON.parse(raw) as T) : initial
+      return raw ? JSON.parse(raw) : initial
     } catch {
       return initial
     }
   }
 
-  const data = ref(read()) as Ref<T>
+  const data = ref(read())
 
   watch(
     data,

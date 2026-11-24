@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from 'vue'
 import { PlusOutlined } from '@ant-design/icons-vue'
 import TaskFilters from '@/components/TaskFilters.vue'
@@ -6,20 +6,19 @@ import TaskList from '@/components/TaskList.vue'
 import TaskForm from '@/components/TaskForm.vue'
 import { useTasks } from '@/composables/useTasks'
 import { useTaskFilters } from '@/composables/useTaskFilters'
-import type { Task } from '@/types/task'
 
 const { totalCount, doneCount, overdueCount } = useTasks()
 const { filteredTasks } = useTaskFilters()
 
 const formOpen = ref(false)
-const editingTask = ref<Task | null>(null)
+const editingTask = ref(null)
 
 const openCreate = () => {
   editingTask.value = null
   formOpen.value = true
 }
 
-const openEdit = (task: Task) => {
+const openEdit = (task) => {
   editingTask.value = task
   formOpen.value = true
 }

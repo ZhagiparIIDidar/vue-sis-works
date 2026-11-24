@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { computed } from 'vue'
 import dayjs from 'dayjs'
 import {
@@ -8,15 +8,16 @@ import {
 } from '@ant-design/icons-vue'
 import { useTasks } from '@/composables/useTasks'
 import { isOverdue } from '@/utils/task'
-import {
-  PRIORITY_OPTIONS,
-  STATUS_OPTIONS,
-  type Task,
-  type TaskStatus
-} from '@/types/task'
+import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '@/constants/task'
 
-const props = defineProps<{ task: Task }>()
-const emit = defineEmits<{ (e: 'edit', task: Task): void }>()
+const props = defineProps({
+  task: {
+    type: Object,
+    required: true
+  }
+})
+
+const emit = defineEmits(['edit'])
 
 const { removeTask, changeStatus } = useTasks()
 
@@ -51,7 +52,7 @@ const dueLabel = computed(() =>
           :value="task.status"
           :options="STATUS_OPTIONS"
           style="width: 150px"
-          @change="(v: any) => changeStatus(task.id, v as TaskStatus)"
+          @change="(v) => changeStatus(task.id, v)"
         />
         <a-button type="text" @click="emit('edit', task)">
           <template #icon><EditOutlined /></template>

@@ -1,7 +1,6 @@
 import dayjs from 'dayjs'
-import type { Task } from '@/types/task'
 
-export function isOverdue(task: Task): boolean {
+export function isOverdue(task) {
   return (
     task.status !== 'done' &&
     !!task.dueDate &&
@@ -9,7 +8,7 @@ export function isOverdue(task: Task): boolean {
   )
 }
 
-export function generateId(): string {
+export function generateId() {
   if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
     return crypto.randomUUID()
   }

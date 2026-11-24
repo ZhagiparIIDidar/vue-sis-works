@@ -1,11 +1,21 @@
-<script setup lang="ts">
+<script setup>
 import { toRef, watch } from 'vue'
 import { useTaskForm } from '@/composables/useTaskForm'
 import { useTasks } from '@/composables/useTasks'
-import { PRIORITY_OPTIONS, STATUS_OPTIONS, type Task } from '@/types/task'
+import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '@/constants/task'
 
-const props = defineProps<{ open: boolean; task: Task | null }>()
-const emit = defineEmits<{ (e: 'update:open', value: boolean): void }>()
+const props = defineProps({
+  open: {
+    type: Boolean,
+    default: false
+  },
+  task: {
+    type: Object,
+    default: null
+  }
+})
+
+const emit = defineEmits(['update:open'])
 
 const { createTask, editTask } = useTasks()
 const { formRef, formState, rules, isEditing, resetForm, fillForm, validate } =

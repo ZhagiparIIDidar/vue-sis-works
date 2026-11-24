@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import ruRU from 'ant-design-vue/es/locale/ru_RU'
 import AppHeader from '@/components/AppHeader.vue'
 import HomeView from '@/views/HomeView.vue'

@@ -2,9 +2,9 @@ import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useTaskStore } from '@/stores/taskStore'
 import { useFilterStore } from '@/stores/filterStore'
-import { PRIORITY_OPTIONS, type Task } from '@/types/task'
+import { PRIORITY_OPTIONS } from '@/constants/task'
 
-const priorityWeight = (t: Task) =>
+const priorityWeight = (t) =>
   PRIORITY_OPTIONS.find((p) => p.value === t.priority)?.weight ?? 0
 
 /** Фильтрация, поиск и сортировка списка задач. */

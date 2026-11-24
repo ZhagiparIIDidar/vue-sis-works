@@ -5,7 +5,7 @@
 ## Технологии
 
 - Vue 3 (Composition API, `<script setup>`)
-- TypeScript, Vite
+- JavaScript, Vite
 - Pinia — хранение состояния (задачи и фильтры)
 - Ant Design Vue 4
 - Composables для всей логики компонентов
@@ -35,9 +35,9 @@ npm run build    # production-сборка
 src/
 ├── components/   AppHeader, TaskFilters, TaskList, TaskItem, TaskForm
 ├── composables/  useTasks, useTaskFilters, useTaskForm, useLocalStorage, useNotification
+├── constants/    task.js
 ├── stores/       taskStore, filterStore (Pinia)
-├── types/        task.ts
-├── utils/        task.ts
+├── utils/        task.js
 └── views/        HomeView.vue
 ```
 

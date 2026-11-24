@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script setup>
 import { ClearOutlined } from '@ant-design/icons-vue'
 import { useTaskFilters } from '@/composables/useTaskFilters'
-import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '@/types/task'
+import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '@/constants/task'
 
 const {
   searchQuery,

@@ -1,9 +1,14 @@
-<script setup lang="ts">
+<script setup>
 import TaskItem from './TaskItem.vue'
-import type { Task } from '@/types/task'
 
-defineProps<{ tasks: Task[] }>()
-const emit = defineEmits<{ (e: 'edit', task: Task): void }>()
+defineProps({
+  tasks: {
+    type: Array,
+    required: true
+  }
+})
+
+const emit = defineEmits(['edit'])
 </script>
 
 <template>
